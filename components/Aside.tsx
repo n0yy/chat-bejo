@@ -29,14 +29,17 @@ export default function Navigation() {
 
   return (
     <>
-      <div className="fixed flex space-x-3 top-10 right-10">
+      <div className="fixed flex space-x-3 top-10 right-10 ">
         {/* Dashboard Link */}
-        <Link href="/dashboard" className={`p-3 ${neumorphism.icon}`}>
-          <RiDashboardHorizontalFill size={24} className="text-gray-700" />
+        <Link
+          href="/dashboard"
+          className={`p-3 ${neumorphism.icon} text-gray-700 transition-colors duration-200 hover:text-blue-800`}
+        >
+          <RiDashboardHorizontalFill size={24} />
         </Link>
         {/* History Chat */}
         <div
-          className={`p-3 ${neumorphism.icon} cursor-pointer`}
+          className={`p-3 ${neumorphism.icon} cursor-pointer text-gray-700 transition-colors duration-200 hover:text-blue-800`}
           onClick={openHistoryModal}
           role="button"
           tabIndex={0}
@@ -45,11 +48,11 @@ export default function Navigation() {
           }
           aria-haspopup="dialog"
         >
-          <VscHistory size={24} className="text-gray-700" />
+          <VscHistory size={24} />
         </div>
         {/* Profile */}
         <div
-          className={`p-3 ${neumorphism.icon} cursor-pointer`}
+          className={`p-3 ${neumorphism.icon} cursor-pointer text-gray-700 transition-colors duration-200 hover:text-blue-800`}
           onClick={openProfileModal}
           role="button"
           tabIndex={0}
@@ -58,7 +61,7 @@ export default function Navigation() {
           }
           aria-haspopup="dialog"
         >
-          <CgProfile size={24} className="text-gray-700" />
+          <CgProfile size={24} />
         </div>
       </div>
 
