@@ -1,4 +1,4 @@
-import Aside from "../components/Aside";
+import Aside from "../components/Menu";
 import PromptInput from "../components/PromptInput";
 import { GoDatabase } from "react-icons/go";
 import { SiGooglesheets } from "react-icons/si";

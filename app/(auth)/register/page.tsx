@@ -11,7 +11,7 @@ export default function Register() {
   return (
     <AuthLayout
       title="Create Account"
-      subtitle="Join Bejo and start your journey"
+      subtitle="Join and use BEJO as your Assistant"
     >
       <form action="" className="space-y-4">
         <Input
