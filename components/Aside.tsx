@@ -4,7 +4,6 @@ import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { RiDashboardHorizontalFill } from "react-icons/ri";
 import Link from "next/link";
-import { neumorphism } from "@/utils/styles";
 import { VscHistory } from "react-icons/vsc";
 
 export default function Navigation() {
@@ -27,42 +26,36 @@ export default function Navigation() {
     setIsProfileModalOpen(false);
   };
 
+  const iconButtonClass =
+    "p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-gray-700 hover:text-gray-900 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-200";
+
   return (
     <>
-      <div className="fixed flex space-x-3 top-10 right-10 ">
+      <div className="fixed flex space-x-4 top-6 right-6">
         {/* Dashboard Link */}
         <Link
           href="/dashboard"
-          className={`p-3 ${neumorphism.icon} text-gray-700 transition-colors duration-200 hover:text-blue-800`}
+          className={iconButtonClass}
+          aria-label="Go to Dashboard"
         >
           <RiDashboardHorizontalFill size={24} />
         </Link>
         {/* History Chat */}
-        <div
-          className={`p-3 ${neumorphism.icon} cursor-pointer text-gray-700 transition-colors duration-200 hover:text-blue-800`}
+        <button
+          className={`${iconButtonClass} hover:cursor-pointer`}
           onClick={openHistoryModal}
-          role="button"
-          tabIndex={0}
-          onKeyPress={(e) =>
-            (e.key === "Enter" || e.key === " ") && openHistoryModal()
-          }
-          aria-haspopup="dialog"
+          aria-label="Open Chat History"
         >
           <VscHistory size={24} />
-        </div>
+        </button>
         {/* Profile */}
-        <div
-          className={`p-3 ${neumorphism.icon} cursor-pointer text-gray-700 transition-colors duration-200 hover:text-blue-800`}
+        <button
+          className={`${iconButtonClass} hover:cursor-pointer`}
           onClick={openProfileModal}
-          role="button"
-          tabIndex={0}
-          onKeyPress={(e) =>
-            (e.key === "Enter" || e.key === " ") && openProfileModal()
-          }
-          aria-haspopup="dialog"
+          aria-label="Open Profile"
         >
           <CgProfile size={24} />
-        </div>
+        </button>
       </div>
 
       {/* History Modal */}
@@ -75,14 +68,14 @@ export default function Navigation() {
           aria-labelledby="historyModalTitle"
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full"
+            className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col">
               <div className="flex items-center justify-between mb-4">
                 <h2
                   id="historyModalTitle"
-                  className="text-xl md:text-2xl font-bold"
+                  className="text-xl md:text-2xl font-bold text-gray-900"
                 >
                   Chat History
                 </h2>
@@ -92,12 +85,12 @@ export default function Navigation() {
               <div className="mt-2 w-full max-h-96 overflow-y-auto">
                 <ul className="space-y-3">
                   {[1, 2, 3, 4, 5].map((item) => (
-                    <li key={item} className="border-b pb-2">
-                      <div className="flex flex-col hover:bg-gray-50 p-2 rounded cursor-pointer">
-                        <span className="font-medium text-gray-800">
+                    <li key={item} className="border-b border-gray-200 pb-2">
+                      <div className="flex flex-col hover:bg-gray-50 p-2 rounded-lg cursor-pointer transition-colors duration-200">
+                        <span className="font-medium text-gray-900">
                           Chat Session {item}
                         </span>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm text-gray-600">
                           April {item + 3}, 2025 • 10:3{item} AM
                         </span>
                         <p className="text-gray-600 text-sm mt-1 truncate">
@@ -110,7 +103,7 @@ export default function Navigation() {
               </div>
 
               <button
-                className="mt-6 bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors w-full"
+                className="mt-6 bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-colors w-full"
                 onClick={closeHistoryModal}
                 aria-label="Close chat history modal"
               >
@@ -131,14 +124,16 @@ export default function Navigation() {
           aria-labelledby="userModalTitle"
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full"
+            className="bg-white p-6 rounded-2xl shadow-xl max-w-md w-full"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex flex-col items-center">
-              <CgProfile size={64} className="text-gray-700" />
+              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <CgProfile size={32} className="text-gray-700" />
+              </div>
               <h2
                 id="userModalTitle"
-                className="text-xl md:text-2xl font-bold mt-4"
+                className="text-xl md:text-2xl font-bold text-gray-900 mt-4"
               >
                 John Doe
               </h2>
@@ -146,7 +141,7 @@ export default function Navigation() {
                 Manufacturing Development
               </p>
               <div className="mt-6 w-full">
-                <h3 className="font-semibold text-base md:text-lg border-b pb-2 mb-4">
+                <h3 className="font-semibold text-base md:text-lg text-gray-900 border-b border-gray-200 pb-2 mb-4">
                   User Information
                 </h3>
                 <div className="space-y-3 text-sm md:text-base">
@@ -175,7 +170,7 @@ export default function Navigation() {
                 </div>
               </div>
               <button
-                className="mt-8 bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors w-full"
+                className="mt-8 bg-gray-900 text-white py-2 px-4 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200 transition-colors w-full"
                 onClick={closeProfileModal}
                 aria-label="Close user information modal"
               >

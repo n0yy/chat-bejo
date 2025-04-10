@@ -4,7 +4,6 @@ import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
-import { neumorphism } from "@/utils/styles";
 import { useState } from "react";
 import Link from "next/link";
 

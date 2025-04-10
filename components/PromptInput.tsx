@@ -9,11 +9,11 @@ export default function PromptInput() {
           name="prompt"
           id="prompt"
           placeholder="Tanya Bejo..."
-          className="w-full border border-gray-300 rounded-full py-3 pl-5 pr-12  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-base"
+          className="w-full border border-gray-300 rounded-full py-3 pl-5 pr-12 focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 shadow-sm text-base text-gray-900 bg-white"
         />
         <button
           type="submit"
-          className="absolute inset-y-0 right-0 flex items-center justify-center hover:cursor-pointer px-4 text-gray-500 hover:text-blue-600 focus:outline-none transition-all duration-100 hover:bg-blue-50 rounded-full"
+          className="absolute inset-y-0 right-0 flex items-center justify-center hover:cursor-pointer px-4 text-gray-600 hover:text-gray-900 focus:outline-none transition-all duration-200 hover:bg-gray-100 rounded-full"
           aria-label="Send question"
         >
           <IoMdSend size={24} />
