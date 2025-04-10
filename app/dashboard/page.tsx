@@ -1,3 +1,4 @@
+// app/dashboard/page.tsx
 "use client";
 
 import {
@@ -6,8 +7,9 @@ import {
 } from "react-icons/md";
 import { useState } from "react";
 import Link from "next/link";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
-export default function Dashboard() {
+export default function DashboardContent() {
   const [rowData, setRowData] = useState([
     {
       name: "Danang Hapis Fadillah",
@@ -130,49 +132,24 @@ export default function Dashboard() {
                 {rowData.map((row, index) => (
                   <tr key={index}>
                     <td className="px-6 py-4 whitespace-nowrap">{row.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap">••••••••</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {row.password}
+                    </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       {row.division}
                     </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{row.role}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <select
-                        name="role"
-                        id="role"
-                        value={row.role}
-                        className="text-xs focus:outline-none"
-                      >
-                        <option value="user">user</option>
-                        <option value="superadmin">superadmin</option>
-                      </select>
+                      {row.levelKnowledge}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <select
-                        value={row.levelKnowledge}
-                        onChange={(e) =>
-                          handleLevelKnowledgeChange(index, e.target.value)
-                        }
-                        className="text-xs focus:outline-none"
-                      >
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                        <option value="Ultra">Ultra</option>
-                      </select>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <select
-                        value={row.status}
-                        onChange={(e) =>
-                          handleStatusChange(index, e.target.value)
-                        }
-                        className={`rounded-full px-2 py-1 text-xs focus:outline-none ${getStatusColor(
+                      <span
+                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
                           row.status
                         )}`}
                       >
-                        <option value="Approved">Approved</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Rejected">Rejected</option>
-                      </select>
+                        {row.status}
+                      </span>
                     </td>
                   </tr>
                 ))}

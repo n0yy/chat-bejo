@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+// components/Input.tsx
+import { ReactNode, ChangeEvent } from "react";
 
 interface InputProps {
   placeholder: string;
@@ -7,6 +8,9 @@ interface InputProps {
   type: string;
   className?: string;
   icon?: ReactNode;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
 }
 
 export default function Input({
@@ -16,6 +20,9 @@ export default function Input({
   type,
   className = "",
   icon,
+  value,
+  onChange,
+  required = false,
 }: InputProps) {
   return (
     <div className="relative">
@@ -29,6 +36,9 @@ export default function Input({
         name={name}
         id={id}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required={required}
         className={`w-full py-2.5 ${
           icon ? "pl-10" : "pl-4"
         } pr-4 text-gray-900 bg-white border border-gray-300 rounded-lg focus:border-gray-700 focus:ring-2 focus:ring-gray-200 transition-all duration-200 text-sm ${className}`}

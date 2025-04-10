@@ -6,6 +6,7 @@ interface ButtonProps {
   className?: string;
   onClick?: () => void;
   variant?: "primary" | "secondary";
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -28,7 +29,7 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`${baseStyles} ${variants[variant]} ${className}`}
+      className={`${baseStyles} ${variants[variant]} ${className} hover:cursor-pointer`}
     >
       {children}
     </button>
